@@ -1,18 +1,22 @@
-const localStorage = window.localStorage;
+export default class UserStore {
+    localStorage = window.localStorage;
 
-export function getUser(id) {
-    const listUser = JSON.parse(localStorage.getItem('user')) || [];
-    return id ? listUser[id] : listUser;
-}
+    constructor() { }
 
-export function addUser(user) {
-    const listUser = JSON.parse(localStorage.getItem('user')) || [];
-    const newListUser = listUser.concat(user);
-    return new Promise(resolve => setTimeout(() => resolve(localStorage.setItem('user', JSON.stringify(newListUser))), 2200));
-}
+    getUser(id) {
+        const listUser = JSON.parse(this.localStorage.getItem('user')) || [];
+        return id ? listUser[id] : listUser;
+    }
 
-export function removeUser(id) {
-    const listUser = JSON.parse(localStorage.getItem('user')) || [];
-    const newListUser = listUser.filter((_, index) => index !== id)
-    localStorage.setItem('user', JSON.stringify(newListUser));
+    addUser(user) {
+        const listUser = JSON.parse(this.localStorage.getItem('user')) || [];
+        const newListUser = listUser.concat(user);
+        return new Promise(resolve => setTimeout(() => resolve(this.localStorage.setItem('user', JSON.stringify(newListUser))), 2200));
+    }
+
+    removeUser(id) {
+        const listUser = JSON.parse(this.localStorage.getItem('user')) || [];
+        const newListUser = listUser.filter((_, index) => index !== id)
+        this.localStorage.setItem('user', JSON.stringify(newListUser));
+    }
 }

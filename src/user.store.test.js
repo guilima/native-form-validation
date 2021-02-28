@@ -1,4 +1,6 @@
-import { addUser, getUser, removeUser } from './user.store.js';
+import UserStore from './user.store.js';
+
+const userStore = new UserStore();
 
 const KEY = 'user';
 const USER = {
@@ -13,31 +15,32 @@ beforeEach(() => {
     localStorage.clear();
 });
 describe('add/remove user', () => {
-    test('should add user to store', async () => {
+    it('should add user to store', async () => {
         expect.assertions(2);
-        await addUser(USER);
+        await userStore.addUser(USER);
         expect(localStorage.setItem).toHaveBeenLastCalledWith(KEY, USER_LIST);
         expect(localStorage.__STORE__[KEY]).toBe(USER_LIST);
     });
 
-    test('should remove user from store', () => {
+    it('should remove user from store', () => {
         const VALUE = 0;
-        removeUser(VALUE);
+        userStore.removeUser(VALUE);
         expect(localStorage.setItem).toHaveBeenLastCalledWith(KEY, USER_LIST_EMPTY);
         expect(localStorage.__STORE__[KEY]).toBe(USER_LIST_EMPTY);
     });
 });
 
 describe('get user', () => {
-    test('should get user from store', () => {
+    it('should get user from store', () => {
         const VALUE = 0;
         localStorage.setItem(KEY, USER_LIST);
-        const user = JSON.stringify(getUser(VALUE));
+        const user = JSON.stringify(userStore.getUser(VALUE));
         expect(localStorage.__STORE__[KEY]).toContain(user);
     });
-    test('should get all user from store', () => {
+
+    it('should get all user from store', () => {
         localStorage.setItem(KEY, USER_LIST);
-        const listUser = JSON.stringify(getUser());
+        const listUser = JSON.stringify(userStore.getUser());
         expect(localStorage.__STORE__[KEY]).toBe(listUser);
     });
 });
