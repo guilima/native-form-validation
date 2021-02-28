@@ -9,7 +9,7 @@
     "prebuild": "npm run test && npm run clean",
     "build": "parcel build index.html",
     "server": "http-server ./dist -c-1",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "test": "node --experimental-vm-modules --no-warnings node_modules/jest/bin/jest.js --verbose true"
   },
   "repository": {
     "type": "git",
