@@ -1,11 +1,11 @@
 import RegisterPage from './register.page.js';
 
 const registerPage = new RegisterPage();
-const NOME = 'Joao Castro Silva';
+const NAME = 'Joao Castro Silva';
 const EMAIL = 'jo_castro@gmail.com';
-const EMAIL_INVALIDO = 'jo_castro@';
+const EMAIL_INVALID = 'jo_castro@';
 const CPF = '13839216877';
-const TELEFONE = '11993242221';
+const PHONE = '11993242221';
 
 beforeEach(() => {
     document.body.innerHTML = `
@@ -49,10 +49,10 @@ beforeEach(() => {
 
 describe('register page', () => {
     it('should submit user data', async () => {
-        document.getElementById('name').value = NOME;
+        document.getElementById('name').value = NAME;
         document.getElementById('email').value = EMAIL;
         document.getElementById('cpf').value = CPF;
-        document.getElementById('phone').value = TELEFONE;
+        document.getElementById('phone').value = PHONE;
         document.getElementById('name').dispatchEvent(new Event("input"));
         document.getElementById('email').dispatchEvent(new Event("input"));
         document.getElementById('cpf').dispatchEvent(new Event("input"));
@@ -64,10 +64,10 @@ describe('register page', () => {
     });
 
     it('should not submit user data', async () => {
-        document.getElementById('name').value = NOME;
-        document.getElementById('email').value = EMAIL_INVALIDO;
+        document.getElementById('name').value = NAME;
+        document.getElementById('email').value = EMAIL_INVALID;
         document.getElementById('cpf').value = CPF;
-        document.getElementById('phone').value = TELEFONE;
+        document.getElementById('phone').value = PHONE;
         document.getElementById('name').dispatchEvent(new Event("input"));
         document.getElementById('email').dispatchEvent(new Event("input"));
         document.getElementById('cpf').dispatchEvent(new Event("input"));
