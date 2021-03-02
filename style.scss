@@ -19,6 +19,20 @@ body {
         width: 100%;
     }
     * { box-sizing: border-box; }
+    &.screen > *:not(.loader) {
+        opacity: .2;
+        user-select: none;
+        pointer-events: none;
+    }
+    &.screen > .loader {
+        font-size: 8px;
+        position: absolute;
+        color: #333333;
+    }
+    &.screen > .loader:before,
+    &.screen > .loader:after {
+        background: #ffffff;
+    }
 }
 
 .h1 {

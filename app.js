@@ -8,8 +8,14 @@ const userStore = new UserStore();
 
 (async function() {
     if(!localStorage.getItem('user')) {
+        const div = document.createElement("div");
+        div.classList.add('loader');
+        document.body.classList.add('screen');
+        document.body.prepend(div);
         const user = await userService.getUser();
         await userStore.addUser(user)
+        document.body.classList.remove('screen');
+        div.classList.remove('loader');
     }
     switch (window.location.pathname) {
         case '/':

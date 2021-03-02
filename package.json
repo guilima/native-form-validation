@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "clean": "rimraf dist",
-    "start": "npm run clean && parcel index.html",
+    "start": "npm run clean && parcel *.html",
     "prebuild": "npm run test && npm run clean",
-    "build": "parcel build index.html",
-    "server": "http-server ./dist -c-1",
+    "build": "parcel build *.html",
+    "server": "http-server ./dist",
     "test": "node --experimental-vm-modules --no-warnings node_modules/jest/bin/jest.js --verbose true"
   },
   "repository": {
