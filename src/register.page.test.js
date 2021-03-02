@@ -58,6 +58,7 @@ describe('register page', () => {
         document.getElementById('cpf').dispatchEvent(new Event("input"));
         document.getElementById('phone').dispatchEvent(new Event("input"));
         expect(document.getElementById('userForm').checkValidity()).toBe(true);
+        expect(document.querySelector("[type='submit']").disabled).toBe(false);
         await registerPage.onSubmit({target: document.getElementById('userForm'), preventDefault: () => {}});
         expect(document.querySelector("[type='submit']").firstChild.data).toBe('Sucesso');
     });
@@ -72,6 +73,7 @@ describe('register page', () => {
         document.getElementById('cpf').dispatchEvent(new Event("input"));
         document.getElementById('phone').dispatchEvent(new Event("input"));
         expect(document.getElementById('userForm').checkValidity()).toBe(false);
+        expect(document.querySelector("[type='submit']").disabled).toBe(true);
         await registerPage.onSubmit({target: document.getElementById('userForm'), preventDefault: () => {}});
         expect(document.querySelector("[type='submit']").firstChild.data).toBe('Cadastrar');
     });
