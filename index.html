@@ -10,11 +10,11 @@
 <body>
     <div class="container">
         <h1 class="h1">Cadastrar usuário</h1>
-        <form class="form" id="userForm" novalidate autocomplete="off">
+        <form class="form" id="userForm" novalidate autocomplete="off" onsubmit="return false;">
             <div class="field-group">
                 <label class="label" for="name">Nome completo (sem abreviações)</label>
                 <div class="input-group">
-                    <input data-label="Nome" type="text" id="name" name="name" class="input" required minlength="3" maxlength="50" pattern="[A-zÀ-ú\s]+">
+                    <input data-label="Nome" type="text" id="name" name="name" class="input" required minlength="3" maxlength="50" pattern="^[A-zÀ-ú ]+$">
                     <div class="error"></div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn">Cadastrar<div class="loader"></div></button>
+            <button type="submit" class="btn" disabled>Cadastrar<div class="loader"></div></button>
         </form>
         
     </div>

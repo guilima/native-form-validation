@@ -40,6 +40,11 @@ body {
         top: 14px;
         transition: all .25s;
         color: #333333;
+        &.filled {
+            font-size: 13px;
+            top: 0px;
+            transition: all .25;
+        }
     }
 }
 
@@ -53,6 +58,17 @@ body {
         line-height: 2;
         font-size: 16px;
         outline: 0;
+        &.dirty:invalid {
+            color: #eb4a46;
+            border-color: #eb4a46;
+        }
+    }
+    .input + .error {
+        padding-top: 4px;
+        min-height: 14px;
+        font-size: 12px;
+        color: #eb4a46;
+        line-height: 0.8;
     }
 }
 
@@ -72,4 +88,97 @@ body {
     outline: none;
     opacity: 1;
     transition: opacity .25s;
+    &:not(:disabled):hover {
+        opacity: .7;
+        transition: opacity .25s;
+    }
+
+    &:not(.loading):disabled {
+        color: #dddcdc;
+        background-color: #f6f6f6;
+        cursor: default;
+    }
+
+    &.loading {
+        font-size: 0 !important;
+        height: 56px;
+    }
+
+    &:not(.loading) .loader {
+        display: none;
+    }
+
+    &:hover .loader:before,
+    &:hover .loader:after {
+        opacity: .7;
+    }
+}
+
+.loader {
+    color: #ffffff;
+    font-size: 2px;
+    text-indent: -99999em;
+    margin: 0px auto;
+    position: relative;
+    width: 10em;
+    height: 10em;
+    box-shadow: inset 0 0 0 1em;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    &,
+    &:before,
+    &:after {
+        border-radius: 50%;
+    }
+    &:before,
+    &:after {
+        position: absolute;
+        content: '';
+    }
+    &:before {
+        width: 5.2em;
+        height: 10.2em;
+        background: #00c8b3;
+        border-radius: 10.2em 0 0 10.2em;
+        top: -0.1em;
+        left: -0.1em;
+        -webkit-transform-origin: 5.1em 5.1em;
+        transform-origin: 5.1em 5.1em;
+        -webkit-animation: load2 2s infinite ease 1.5s;
+        animation: load2 2s infinite ease 1.5s;
+    }
+    &:after {
+        width: 5.2em;
+        height: 10.2em;
+        background: #00c8b3;
+        border-radius: 0 10.2em 10.2em 0;
+        top: -0.1em;
+        left: 4.9em;
+        -webkit-transform-origin: 0.1em 5.1em;
+        transform-origin: 0.1em 5.1em;
+        -webkit-animation: load2 2s infinite ease;
+        animation: load2 2s infinite ease;
+    }
+}
+
+@-webkit-keyframes load2 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes load2 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
 }
