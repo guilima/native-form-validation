@@ -22,7 +22,11 @@ const userStore = new UserStore();
             listPage.render();
             break;
 
+        case '/404.html':
+            break;
+
         default:
+            window.location.href = "/404.html";
             break;
     }
 }());
