@@ -6,7 +6,9 @@ Gerenciar máquina de estado para cadastrar, consultar, e remover usuário via l
 
 ## Configuração
 
-Foi utilizado Volta para versionar o node/npm. Caso utilize essa ferramente a versão do node/npm será configurada automaticamente conforme package.json, caso não utilize, tudo bem, pois para esse projeto uma versão diferente do node/npm não deve causar problemas.
+Foi utilizado Volta para versionar o node/npm. Caso utilize essa ferramenta a versão do node/npm será configurada automaticamente conforme package.json.
+
+**IMPORTANTE:** Necessário utilizar v14.16.0 para rodar o comando `npm test` e também para gerar o build do projeto. (melhoria: utilizar babel na configuração do parcel)
 
 Rodar `npm i` para baixar as dependências de desenvolvimento e o projeto estará pronto.
 
